@@ -63,27 +63,27 @@ let popups = [];
 // Goals
 let goals = [];
 let goalIdx = parseInt(localStorage.getItem("ohflip.goalIdx")) || 0;
-goals.push({text: "Do a flip", func: DidAFlipThisBounce, param: 1});
-goals.push({text: "Land 2 flips in a row", func: FlipStreakCheck, param: 2});
-goals.push({text: "Land perfectly", func: LandedPerfectly, param: 1});
-goals.push({text: "Reach a height of 20 ft", func: ReachedHeight, param: 20});
-goals.push({text: "Do a double flip", func: DidAFlipThisBounce, param: 2});
-goals.push({text: "Land 3 flips in a row", func: FlipStreakCheck, param: 3});
-goals.push({text: "Land on your head", func: LandedOnHead, param: 1});
-goals.push({text: "Do a triple flip", func: DidAFlipThisBounce, param: 3});
-goals.push({text: "Land perfectly 2 times in a row", func: PerfectStreakCheck, param: 2});
-goals.push({text: "Reach a height of 50 ft", func: ReachedHeight, param: 5});
-goals.push({text: "Land 4 flips in a row", func: FlipStreakCheck, param: 4});
-goals.push({text: "Do a quad flip", func: DidAFlipThisBounce, param: 4});
-goals.push({text: "Land 5 flips in a row", func: FlipStreakCheck, param: 5});
-goals.push({text: "Land perfectly 3 times in a row", func: PerfectStreakCheck, param: 3});
-goals.push({text: "Reach a height of 100 ft", func: ReachedHeight, param: 10});
-goals.push({text: "Do a x5 flip", func: DidAFlipThisBounce, param: 5});
-goals.push({text: "Land 10 flips in a row", func: FlipStreakCheck, param: 10});
-goals.push({text: "Reach a height of 250 ft", func: ReachedHeight, param: 250});
-goals.push({text: "Land perfectly 5 times in a row", func: PerfectStreakCheck, param: 5});
-goals.push({text: "Do a x10 flip", func: DidAFlipThisBounce, param: 7});
-goals.push({text: "Reach a height of 500 ft", func: ReachedHeight, param: 500});
+goals.push({text: "Haz un giro", func: DidAFlipThisBounce, param: 1});
+goals.push({text: "Aterriza dos giros x1 seguidos", func: FlipStreakCheck, param: 2});
+goals.push({text: "Aterriza perfectamente", func: LandedPerfectly, param: 1});
+goals.push({text: "Aterriza un giro de 20 m", func: ReachedHeight, param: 20});
+goals.push({text: "Haz un doble giro", func: DidAFlipThisBounce, param: 2});
+goals.push({text: "Aterriza tres giros seguidos", func: FlipStreakCheck, param: 3});
+goals.push({text: "Aterriza sobre tu cabeza", func: LandedOnHead, param: 1});
+goals.push({text: "Haz un giro x3", func: DidAFlipThisBounce, param: 3});
+goals.push({text: "Aterriza perfectamente dos veces seguidas", func: PerfectStreakCheck, param: 2});
+goals.push({text: "Alcanza la altura de 50 m", func: ReachedHeight, param: 5});
+goals.push({text: "Aterriza cuatro giros seguidos", func: FlipStreakCheck, param: 4});
+goals.push({text: "Haz un giro x4", func: DidAFlipThisBounce, param: 4});
+goals.push({text: "Aterriza 5 giros seguidos", func: FlipStreakCheck, param: 5});
+goals.push({text: "Aterriza perfectamente 3 veces seguidas", func: PerfectStreakCheck, param: 3});
+goals.push({text: "Aterriza un giro de 100 m", func: ReachedHeight, param: 10});
+goals.push({text: "Haz un giro x5", func: DidAFlipThisBounce, param: 5});
+goals.push({text: "Aterriza 10 giros seguidos", func: FlipStreakCheck, param: 10});
+goals.push({text: "Alcanza la altura de 250 m", func: ReachedHeight, param: 250});
+goals.push({text: "Aterriza perfectamente 5 veces seguidas", func: PerfectStreakCheck, param: 5});
+goals.push({text: "Haz un giro x10", func: DidAFlipThisBounce, param: 7});
+goals.push({text: "Alcanza la altura de 500 m", func: ReachedHeight, param: 500});
 let goalCompleteTime = 0.0;
 
 document.addEventListener("mousedown", e => { touch = true; SetTouchPos(e); }, false);
@@ -257,7 +257,7 @@ function UpdatePlayer(dt)
             fallOutTime = 1.0;
             fallOutLeft = Math.random() < 0.5;
 
-            AddPopup(canvas.width*0.5 + 100, canvas.height - 100, "miss", "#F42");
+            AddPopup(canvas.width*0.5 + 100, canvas.height - 100, "Fallaste", "#F42");
 
             if (Math.abs(playerAngle) > 145.0)
             {
@@ -297,11 +297,11 @@ function UpdatePlayer(dt)
 
                 if (perfectJump)
                 {
-                    AddPopup(canvas.width*0.5 + 100, canvas.height - 100, "perfect!", "#FF0");
+                    AddPopup(canvas.width*0.5 + 100, canvas.height - 100, "Perfecto!", "#FF0");
                 }
                 else
                 {
-                    AddPopup(canvas.width*0.5 + 100, canvas.height - 100, "good", "#0F4");
+                    AddPopup(canvas.width*0.5 + 100, canvas.height - 100, "Genial", "#0F4");
                 }
             }
             else
@@ -535,11 +535,11 @@ function DrawUI()
         DrawText(titleTxt, canvas.width*0.5, 160, -5*Math.PI/180.0, 170, "center", "#000");
         DrawText(titleTxt, (canvas.width*0.5) - 10, 155, -5*Math.PI/180.0, 170, "center", "#FF9600");
 
-        let subtitleTxt = "a game about backflips";
+        let subtitleTxt = "Un juego de giros en el aire";
         DrawText(subtitleTxt, (canvas.width*0.5), 240, -5*Math.PI/180.0, 50, "center", "#000");
         DrawText(subtitleTxt, (canvas.width*0.5) - 4, 235, -5*Math.PI/180.0, 50, "center", "#FFF");
 
-        let instructionsTxt = "land flips to gain height - complete goals to feel good";
+        let instructionsTxt = "Aterriza giros en el aire para ganar altura";
         DrawText(instructionsTxt, (canvas.width*0.5), canvas.height - 20, 0.0, 25, "center", "#000");
         DrawText(instructionsTxt, (canvas.width*0.5) - 3, canvas.height - 23, 0.0, 25, "center", "#FFF");
     }
@@ -553,7 +553,7 @@ function DrawUI()
             maxHeightFt = heightFt;
         }
 
-        let heightTxt = `Height: ${heightFt} ft (Best: ${maxHeightFt} ft)`;
+        let heightTxt = `Altura: ${heightFt} m (Giro más alto: ${maxHeightFt} m)`;
         DrawText(heightTxt, 12, 27, 0.0, 20, "left", "#000");
         //DrawText(heightTxt, 18, 28, 0.0, 25, "left", "#AAF");
 
@@ -576,15 +576,15 @@ function DrawUI()
 
         if (goalIdx < goals.length)
         {
-            DrawText(`Goal #${goalIdx + 1}:`, canvas.width - 12, 27, 0.0, 20, "right", goalTextColor);
+            DrawText(`Objetivos #${goalIdx + 1}:`, canvas.width - 12, 27, 0.0, 20, "right", goalTextColor);
             DrawText(goals[goalIdx].text, canvas.width - 12, 50, 0.0, 20, "right", goalTextColor);
         }
         else
         {
             goalTextColor = (Date.now() % 800 < 400) ? "#000" : "#FF9600";
 
-            DrawText(`Congratulations! You've completed all goals!`, canvas.width - 12, 27, 0.0, 20, "right", goalTextColor);
-            DrawText("Press here to reset and play again!", canvas.width - 12, 50, 0.0, 20, "right", goalTextColor);
+            DrawText(`Felicidades! Completaste todos los objetivos`, canvas.width - 12, 27, 0.0, 20, "right", goalTextColor);
+            DrawText("Presiona acá para volver a jugar", canvas.width - 12, 50, 0.0, 20, "right", goalTextColor);
         }
     }
 
@@ -637,7 +637,7 @@ function CheckGoals()
 {
     if (goalIdx < goals.length && goals[goalIdx].func(goals[goalIdx]))
     {
-        AddPopup(canvas.width - 100, 120, "complete!", "#FF0", true);
+        AddPopup(canvas.width - 100, 120, "Completado!", "#FF0", true);
         goalCompleteTime = 1.0;
         didAFlipStreak = 0;
         perfectStreak = 0;
